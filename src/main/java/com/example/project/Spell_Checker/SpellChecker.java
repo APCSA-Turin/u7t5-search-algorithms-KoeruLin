@@ -28,9 +28,12 @@ public class SpellChecker {
      *  It also tracks the number of words checked (loop iterations) and
      *  prints that value out before returning.
      */
-    public boolean linearSpellCheck(String word) {
+    public boolean linearSpellCheck(String word) 
+    {
         loopCounter = 0; // for testing
-        for (String s : dictionary) {
+        
+        for (String s : dictionary) 
+        {
             loopCounter++; // for testing
             if (word.equals(s)) {
                 System.out.println("-- LINEAR SEARCH: Number of words checked (loop iterations): " + loopCounter);
