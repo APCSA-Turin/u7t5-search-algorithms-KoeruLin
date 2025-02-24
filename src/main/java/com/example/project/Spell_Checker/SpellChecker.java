@@ -36,11 +36,11 @@ public class SpellChecker {
         {
             loopCounter++; // for testing
             if (word.equals(s)) {
-                System.out.println("-- LINEAR SEARCH: Number of words checked (loop iterations): " + loopCounter);
+                System.out.println(loopCounter);
                 return true;
             }
         }
-        System.out.println("-- LINEAR SEARCH: Number of words checked (loop iterations): " + loopCounter);
+        System.out.println(loopCounter);
         return false;
     }
 
@@ -52,8 +52,32 @@ public class SpellChecker {
      *  It also tracks the number of words checked (loop iterations) and
      *  prints that value out before returning.
      */
-    public boolean binarySpellCheck(String word) {
-        return false;
+    public boolean binarySpellCheck(String word) 
+    {
+       loopCounter = 0; 
+       int leftIdx = 0;
+       int rightIdx = dictionary.size() - 1;
+
+       while (leftIdx <= rightIdx) 
+       {
+           loopCounter++;
+           int middle = (leftIdx + rightIdx) / 2;
+           
+           if (word.equals(dictionary.get(middle))) 
+            {
+                return true;
+            } 
+            else if (word.compareTo(dictionary.get(middle)) < 0) 
+            {
+                rightIdx = middle - 1;
+            } 
+            else 
+            {
+                leftIdx = middle + 1;
+            }
+       }
+
+       return false;
     }
 
     // private helper method, called in the constructor, which loads the words
